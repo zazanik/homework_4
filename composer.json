@@ -1,0 +1,15 @@
+{
+    "name": "zazanik/hw",
+    "authors": [
+        {
+            "name": "zazanik",
+            "email": "oleksandr_zi@ukr.net"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {"zazanik\\hw\\": "application"}
+    },
+
+    "require": {}
+}
