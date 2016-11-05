@@ -20,10 +20,7 @@ class NewsController {
 	{
 		if ($id) {
 			$newsItem = News::getNewsItemByID($id);
-
-	require_once(ROOT . '/application/views/news/view.php');
-
-
+			require_once(ROOT . '/application/views/news/view.php');
 		}
 
 		return true;

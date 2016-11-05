@@ -13,7 +13,7 @@ class University
         $db = Db::getConnection();
         $universitiesList = array();
 
-        $result = $db->query('SELECT id, name, city, link FROM universities ORDER BY id ASC');
+        $result = $db->query('SELECT id, name, city, link FROM university ORDER BY id ASC');
 
         $i = 0;
         while($row = $result->fetch()) {
@@ -28,12 +28,28 @@ class University
 
     }
     
-    public function create($name, $city, $link)
+    public static function create($name, $city, $link)
     {
+
+        $name = trim($name);
+
+        if ( empty($name) ){
+            $error['empty-name'] = "Введіть назву університету";
+            return $error;
+        }
+
+        $city = trim($city);
+
+        if ( empty($city) ){
+            return false;
+        }
+
+        $link = trim($link);
+
         $db = Db::getConnection();
         $create = array();
         
-        $create = $db->query("INSERT INTO universities (name, city, link) VALUES ('{$name}', '{$city}', '{$link}')");
+        $create = $db->query("INSERT INTO university (name, city, link) VALUES ('{$name}', '{$city}', '{$link}')");
 
     }
 }
