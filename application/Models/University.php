@@ -72,4 +72,18 @@ class University
             return true;
         }
     }
+    
+    public static function edit($id)
+    {
+        $id = intval($id);
+        if ($id) {
+            $db = Db::getConnection();
+
+            $post = array();
+            $post[0] = $_POST['name'];
+            $post[1] = $_POST['city'];
+            $post[2] = $_POST['link'];
+            $result = $db->query("UPDATE university SET name='$post[0]', city='$post[1]', link='$post[2]' WHERE id='$id'");
+        }
+    }
 }

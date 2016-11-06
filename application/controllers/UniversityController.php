@@ -32,7 +32,6 @@ class UniversityController
         }
 
         return true;
-
     }
 
     public function actionDelete($id)
@@ -42,6 +41,22 @@ class UniversityController
             self::actionIndex();
             return true;
         }
+    }
+
+    public function actionEdit($id)
+    {
+        if (@$_REQUEST['submit']) {
+            $edit = University::edit($id);
+            self::actionView($id);
+            return true;
+        }
+
+        if ($id) {
+            $universitiesItem = University::getNewsItemByID($id);
+            require_once(ROOT . '/application/views/university/edit.php');
+            return true;
+        }
+
     }
 
 }
