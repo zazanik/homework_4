@@ -9,9 +9,7 @@ class Chair
     {
         $db = Db::getConnection();
         $chairList = array();
-
         $result = $db->query('SELECT id, name FROM chair ORDER BY id ASC');
-
         $i = 0;
         while($row = $result->fetch()) {
             $chairList[$i]['id'] = $row['id'];
@@ -20,12 +18,10 @@ class Chair
         }
 
         return $chairList;
-
     }
 
     public static function create($name)
     {
-
         $name = trim($name);
 
         if ( empty($name) ){
@@ -35,8 +31,6 @@ class Chair
         
         $db = Db::getConnection();
         $create = array();
-
         $create = $db->query("INSERT INTO chair (name) VALUES ('{$name}')");
-
     }
 }

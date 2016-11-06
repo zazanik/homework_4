@@ -8,14 +8,13 @@ class University
     /**
      * Returns an array of news items
      */
-    public static function getList() {
-
+    public static function getList() 
+    {
         $db = Db::getConnection();
         $universitiesList = array();
-
         $result = $db->query('SELECT id, name, city, link FROM university ORDER BY id ASC');
-
         $i = 0;
+        
         while($row = $result->fetch()) {
             $universitiesList[$i]['id'] = $row['id'];
             $universitiesList[$i]['name'] = $row['name'];
@@ -25,12 +24,10 @@ class University
         }
 
         return $universitiesList;
-
     }
     
     public static function create($name, $city, $link)
     {
-
         $name = trim($name);
         
         if ( empty($name) ){
@@ -56,7 +53,6 @@ class University
     public static function getNewsItemByID($id)
     {
         $id = intval($id);
-
         if ($id) {
             $db = Db::getConnection();
             $result = $db->query('SELECT * FROM university WHERE id=' . $id);
@@ -64,6 +60,5 @@ class University
             $universitiesItem = $result->fetch();
             return $universitiesItem;
         }
-
     }
 }

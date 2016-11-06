@@ -3,8 +3,6 @@
 namespace zazanik\hw\controllers;
 use zazanik\hw\Models\University;
 
-
-
 class UniversityController
 {
     public function actionIndex()
