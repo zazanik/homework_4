@@ -26,4 +26,15 @@ class UniversityController
         return true;
     }
 
+    public function actionView($id)
+    {
+        if ($id) {
+            $universitiesItem = University::getNewsItemByID($id);
+            require_once(ROOT . '/application/views/university/view.php');
+        }
+
+        return true;
+
+    }
+
 }

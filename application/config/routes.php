@@ -1,11 +1,14 @@
 <?php
 return array(
-
-	'news/([0-9]+)' => 'news/view/$1',
-	'news' => 'news/index',
+	
+	'^$'					=> 'index/index',
 
 	'university/create'	=> 'university/create',
+	'university/([0-9]+)'	=> 'university/view/$1',
 	'university' 		=> 'university/index',
+
+	'chair/create'		=> 'chair/create',
+	'chair'				=> 'chair/index'
 
 
 

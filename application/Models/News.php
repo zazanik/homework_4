@@ -37,12 +37,7 @@ class News
 	* Returns an array of news items
 	*/
 	public static function getNewsList() {
-/*		$host = 'localhost';
-		$dbname = 'php_base';
-		$user = 'root';
-		$password = '';
-		$db = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);*/
-
+		
 		$db = Db::getConnection();
 		$newsList = array();
 

@@ -32,7 +32,7 @@ class University
     {
 
         $name = trim($name);
-
+        
         if ( empty($name) ){
             $error['empty-name'] = "Введіть назву університету";
             return $error;
@@ -50,6 +50,20 @@ class University
         $create = array();
         
         $create = $db->query("INSERT INTO university (name, city, link) VALUES ('{$name}', '{$city}', '{$link}')");
+
+    }
+
+    public static function getNewsItemByID($id)
+    {
+        $id = intval($id);
+
+        if ($id) {
+            $db = Db::getConnection();
+            $result = $db->query('SELECT * FROM university WHERE id=' . $id);
+            $result->setFetchMode(\PDO::FETCH_ASSOC);
+            $universitiesItem = $result->fetch();
+            return $universitiesItem;
+        }
 
     }
 }

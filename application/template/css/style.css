@@ -52,10 +52,40 @@ a:hover {
 }
 
 table{
+	margin: 100px 0;
 	width: 100%;
 }
 
 table td{
 	border: 1px solid black;
 	text-align: center;
+}
+
+header{
+	background-color: black;
+	min-height: 43px;
+}
+
+header nav ul{
+	float: right;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	clear: both;
+}
+
+header nav li{
+	float: left;
+	padding: 10px 30px;
+}
+
+.main-title{
+	margin: 20px 0;
+	text-align: center;
+}
+
+.container{
+	width: 100%;
+	max-width: 1170px;
+	margin: 0 auto;
 }
