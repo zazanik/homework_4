@@ -35,4 +35,13 @@ class UniversityController
 
     }
 
+    public function actionDelete($id)
+    {
+        if ($id) {
+            $universityDelete = University::delete($id);
+            self::actionIndex();
+            return true;
+        }
+    }
+
 }

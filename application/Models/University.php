@@ -61,4 +61,15 @@ class University
             return $universitiesItem;
         }
     }
+
+    public static function delete($id)
+    {
+        $id = intval($id);
+        if ($id) {
+            $db = Db::getConnection();
+            $result = $db->query('DELETE FROM university WHERE id=' . $id);
+
+            return true;
+        }
+    }
 }
