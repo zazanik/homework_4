@@ -50,7 +50,7 @@ class University
 
     }
 
-    public static function getNewsItemByID($id)
+    public static function getUniversityItemByID($id)
     {
         $id = intval($id);
         if ($id) {

@@ -33,4 +33,39 @@ class Chair
         $create = array();
         $create = $db->query("INSERT INTO chair (name) VALUES ('{$name}')");
     }
+
+    public static function getChairItemByID($id)
+    {
+        $id = intval($id);
+        if ($id) {
+            $db = Db::getConnection();
+            $result = $db->query('SELECT * FROM chair WHERE id=' . $id);
+            $result->setFetchMode(\PDO::FETCH_ASSOC);
+            $resultItem = $result->fetch();
+            return $resultItem;
+        }
+    }
+
+    public static function delete($id)
+    {
+        $id = intval($id);
+        if ($id) {
+            $db = Db::getConnection();
+            $result = $db->query('DELETE FROM chair WHERE id=' . $id);
+
+            return true;
+        }
+    }
+
+    public static function edit($id)
+    {
+        $id = intval($id);
+        if ($id) {
+            $db = Db::getConnection();
+
+            $post = array();
+            $post[0] = $_POST['name'];
+            $result = $db->query("UPDATE chair SET name='$post[0]' WHERE id='$id'");
+        }
+    }
 }

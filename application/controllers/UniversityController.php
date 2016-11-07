@@ -27,7 +27,7 @@ class UniversityController
     public function actionView($id)
     {
         if ($id) {
-            $universitiesItem = University::getNewsItemByID($id);
+            $universitiesItem = University::getUniversityItemByID($id);
             require_once(ROOT . '/application/views/university/view.php');
         }
 

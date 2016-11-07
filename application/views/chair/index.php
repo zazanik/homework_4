@@ -8,17 +8,13 @@
 
     <?php foreach ($chairList as $chairItem) : ?>
         <tr>
-            <td><?php echo $chairItem['name']; ?></td>
-            <td>edit</td>
-            <td>delete</td>
+            <td><a href="/chair/<?php echo $chairItem['id']; ?>"><?php echo $chairItem['name']; ?></a></td>
         </tr>
 
     <?php endforeach; ?>
 
     <tr>
         <td><a href="/chair/create/">Создать запись</a></td>
-        <td></td>
-        <td></td>
     </tr>
 
 </table>
