@@ -10,9 +10,9 @@
 
     <?php foreach ($universitiesList as $universitiesItem) : ?>
     <tr>
-        <td><a href="/university/<?php echo $universitiesItem['id'] ?>"><?php echo $universitiesItem['name']; ?></a></td>
-        <td><?php echo $universitiesItem['city']; ?></td>
-        <td><?php echo $universitiesItem['link']; ?></td>
+        <td><a href="/university/<?php echo $universitiesItem->id ?>"><?php echo $universitiesItem->name; ?></a></td>
+        <td><?php echo $universitiesItem->city; ?></td>
+        <td><?php echo $universitiesItem->link; ?></td>
     </tr>
 
     <?php endforeach; ?>

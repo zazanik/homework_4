@@ -3,18 +3,20 @@
 
 <table>
     <tr>
+        <td>ID</td>
         <td>Назва</td>
     </tr>
 
     <?php foreach ($chairList as $chairItem) : ?>
         <tr>
-            <td><a href="/chair/<?php echo $chairItem['id']; ?>"><?php echo $chairItem['name']; ?></a></td>
+            <td><?php echo $chairItem->id; ?></td>
+            <td><a href="/chair/<?php echo $chairItem->id; ?>"><?php echo $chairItem->name; ?></a></td>
         </tr>
 
     <?php endforeach; ?>
 
     <tr>
-        <td><a href="/chair/create/">Создать запись</a></td>
+        <td><a href="/chair/new/">Создать запись</a></td>
     </tr>
 
 </table>

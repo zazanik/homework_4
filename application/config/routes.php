@@ -9,6 +9,7 @@ return array(
 	'chair/([0-9]+)'				=> 'chair/view/$1',
 	'chair/delete/([0-9]+)'			=> 'chair/delete/$1',
 	'chair/edit/([0-9]+)'			=> 'chair/edit/$1',
+	'chair/new'						=> 'chair/new',
 	'chair/create'					=> 'chair/create',
 	'chair'							=> 'chair/index'
 	);

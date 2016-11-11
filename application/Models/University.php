@@ -5,25 +5,21 @@ use zazanik\hw\components\Db;
 
 class University
 {
+    public $id;
+    public $name;
+    public $city;
+    public $link;
+
     /**
-     * Returns an array of news items
+     * Returns an array of university items
      */
     public static function getList() 
     {
         $db = Db::getConnection();
-        $universitiesList = array();
-        $result = $db->query('SELECT id, name, city, link FROM university ORDER BY id ASC');
-        $i = 0;
-        
-        while($row = $result->fetch()) {
-            $universitiesList[$i]['id'] = $row['id'];
-            $universitiesList[$i]['name'] = $row['name'];
-            $universitiesList[$i]['city'] = $row['city'];
-            $universitiesList[$i]['link'] = $row['link'];
-            $i++;
-        }
-
-        return $universitiesList;
+        $sth = $db->prepare('SELECT id, name, city, link FROM university ORDER BY id ASC');
+        $sth->execute();
+        $universityList = $sth->fetchAll($db::FETCH_CLASS, University::class);
+        return $universityList;
     }
     
     public static function create($name, $city, $link)
@@ -46,7 +42,8 @@ class University
         $db = Db::getConnection();
         $create = array();
         
-        $create = $db->query("INSERT INTO university (name, city, link) VALUES ('{$name}', '{$city}', '{$link}')");
+        $create = $db->prepare("INSERT INTO university (name, city, link) VALUES ('{$name}', '{$city}', '{$link}')");
+        $create->execute();
 
     }
 
@@ -55,9 +52,10 @@ class University
         $id = intval($id);
         if ($id) {
             $db = Db::getConnection();
-            $result = $db->query('SELECT * FROM university WHERE id=' . $id);
+            $result = $db->prepare('SELECT * FROM university WHERE id=' . $id);
             $result->setFetchMode(\PDO::FETCH_ASSOC);
-            $universitiesItem = $result->fetch();
+            $result->execute();
+            $universitiesItem = $result->fetchAll($db::FETCH_CLASS, University::class);
             return $universitiesItem;
         }
     }
@@ -83,7 +81,8 @@ class University
             $post[0] = $_POST['name'];
             $post[1] = $_POST['city'];
             $post[2] = $_POST['link'];
-            $result = $db->query("UPDATE university SET name='$post[0]', city='$post[1]', link='$post[2]' WHERE id='$id'");
+            $result = $db->prepare("UPDATE university SET name='$post[0]', city='$post[1]', link='$post[2]' WHERE id='$id'");
+            $result->execute();
         }
     }
 }

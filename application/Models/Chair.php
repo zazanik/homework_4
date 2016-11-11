@@ -5,18 +5,16 @@ use zazanik\hw\components\Db;
 
 class Chair
 {
+    public $id;
+    public $name;
+
     public static function getChairList()
     {
         $db = Db::getConnection();
         $chairList = array();
-        $result = $db->query('SELECT id, name FROM chair ORDER BY id ASC');
-        $i = 0;
-        while($row = $result->fetch()) {
-            $chairList[$i]['id'] = $row['id'];
-            $chairList[$i]['name'] = $row['name'];
-            $i++;
-        }
-
+        $result = $db->prepare('SELECT id, name FROM chair ORDER BY id ASC');
+        $result->execute();
+        $chairList = $result->fetchAll($db::FETCH_CLASS, Chair::class);
         return $chairList;
     }
 
@@ -30,8 +28,8 @@ class Chair
         }
         
         $db = Db::getConnection();
-        $create = array();
-        $create = $db->query("INSERT INTO chair (name) VALUES ('{$name}')");
+        $create = $db->prepare("INSERT INTO chair (name) VALUES ('{$name}')");
+        $create->execute();
     }
 
     public static function getChairItemByID($id)
