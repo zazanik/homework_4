@@ -2,6 +2,10 @@
 
 namespace zazanik\hw\controllers;
 
+/**
+ * Class IndexController
+ * @package zazanik\hw\controllers
+ */
 class IndexController
 {
     public function actionIndex()

@@ -2,9 +2,15 @@
 
 namespace zazanik\hw\components;
 
+/**
+ * Class Db
+ * @package zazanik\hw\components
+ */
 class Db
 {
-
+	/**
+	 * @return \PDO
+	 */
 	public static function getConnection()
 	{
 		$paramsPath = ROOT . '/application/config/db_params.php';

@@ -2,8 +2,16 @@
 
 namespace zazanik\hw\controllers;
 use zazanik\hw\Models\Chair;
+
+/**
+ * Class ChairController
+ * @package zazanik\hw\controllers
+ */
 class ChairController
 {
+    /**
+     * @return bool
+     */
     public function actionIndex()
     {
         $chairList = Chair::getChairList();
@@ -11,12 +19,15 @@ class ChairController
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function actionNew()
     {
         require_once (ROOT . '/application/views/chair/create.php');
         return true;
     }
-
+    
     public function actionCreate()
     {
         $postInfo = $_POST;
@@ -26,6 +37,10 @@ class ChairController
         return header('Location: /chair/index');
     }
 
+    /**
+     * @param $id integer
+     * @return bool
+     */
     public function actionView($id)
     {
         if ($id) {
@@ -36,6 +51,9 @@ class ChairController
         return true;
     }
 
+    /**
+     * @param $id integer
+     */
     public function actionDelete($id)
     {
         if ($id) {
@@ -44,6 +62,10 @@ class ChairController
         }
     }
 
+    /**
+     * @param $id integer
+     * @return bool|void
+     */
     public function actionEdit($id)
     {
         if (@$_REQUEST['submit']) {

@@ -3,15 +3,34 @@
 namespace zazanik\hw\Models;
 use zazanik\hw\components\Db;
 
+/**
+ * Class University
+ * @package zazanik\hw\Models
+ */
 class University
 {
+    /**
+     * @var integer
+     */
     public $id;
+
+    /**
+     * @var string
+     */
     public $name;
+
+    /**
+     * @var string
+     */
     public $city;
+
+    /**
+     * @var string
+     */
     public $link;
 
     /**
-     * Returns an array of university items
+     * @return array
      */
     public static function getList() 
     {
@@ -21,7 +40,13 @@ class University
         $universityList = $sth->fetchAll($db::FETCH_CLASS, University::class);
         return $universityList;
     }
-    
+
+    /**
+     * @param $name string
+     * @param $city string
+     * @param $link string
+     * @return bool
+     */
     public static function create($name, $city, $link)
     {
         $name = trim($name);
@@ -47,6 +72,10 @@ class University
 
     }
 
+    /**
+     * @param $id integer
+     * @return array
+     */
     public static function getUniversityItemByID($id)
     {
         $id = intval($id);
@@ -60,6 +89,10 @@ class University
         }
     }
 
+    /**
+     * @param $id string
+     * @return bool
+     */
     public static function delete($id)
     {
         $id = intval($id);
@@ -70,7 +103,11 @@ class University
             return true;
         }
     }
-    
+
+    /**
+     * @param $id integer
+     * @return bool
+     */
     public static function edit($id)
     {
         $id = intval($id);
@@ -83,6 +120,9 @@ class University
             $post[2] = $_POST['link'];
             $result = $db->prepare("UPDATE university SET name='$post[0]', city='$post[1]', link='$post[2]' WHERE id='$id'");
             $result->execute();
+            return true;
         }
+        return false;
+
     }
 }

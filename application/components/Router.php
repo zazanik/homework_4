@@ -2,17 +2,29 @@
 
 namespace zazanik\hw\components;
 
+/**
+ * Class Router
+ * @package zazanik\hw\components
+ */
 class Router
 {
-
+	/**
+	 * @var mixed
+	 */
 	private $routes;
 
+	/**
+	 * Router constructor.
+	 */
 	public function __construct()
 	{
 		$routesPath = ROOT.'/application/config/routes.php';
 		$this->routes = include($routesPath);
 	}
-	
+
+	/**
+	 * @return string
+	 */
 	private function getURI()
 	{
 		if (!empty($_SERVER['REQUEST_URI'])) {

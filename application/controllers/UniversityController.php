@@ -3,8 +3,15 @@
 namespace zazanik\hw\controllers;
 use zazanik\hw\Models\University;
 
+/**
+ * Class UniversityController
+ * @package zazanik\hw\controllers
+ */
 class UniversityController
 {
+    /**
+     * @return bool
+     */
     public function actionIndex()
     {
         $universitiesList = University::getList();
@@ -12,6 +19,9 @@ class UniversityController
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function actionCreate()
     {
         $postInfo = $_POST;
@@ -23,6 +33,10 @@ class UniversityController
         return true;
     }
 
+    /**
+     * @param $id integer
+     * @return bool
+     */
     public function actionView($id)
     {
         if ($id) {
@@ -33,6 +47,10 @@ class UniversityController
         return true;
     }
 
+    /**
+     * @param $id integer
+     * @return bool
+     */
     public function actionDelete($id)
     {
         if ($id) {
@@ -42,6 +60,10 @@ class UniversityController
         }
     }
 
+    /**
+     * @param $id integer
+     * @return bool
+     */
     public function actionEdit($id)
     {
         if (@$_REQUEST['submit']) {

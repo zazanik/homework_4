@@ -3,11 +3,25 @@
 namespace zazanik\hw\Models;
 use zazanik\hw\components\Db;
 
+/**
+ * Class Chair
+ * @package zazanik\hw\Models
+ */
 class Chair
 {
+    /**
+     * @var integer
+     */
     public $id;
+
+    /**
+     * @var string
+     */
     public $name;
 
+    /**
+     * @return array
+     */
     public static function getChairList()
     {
         $db = Db::getConnection();
@@ -18,6 +32,10 @@ class Chair
         return $chairList;
     }
 
+    /**
+     * @param $name string
+     * @return mixed
+     */
     public static function create($name)
     {
         $name = trim($name);
@@ -32,6 +50,10 @@ class Chair
         $create->execute();
     }
 
+    /**
+     * @param $id integer
+     * @return mixed
+     */
     public static function getChairItemByID($id)
     {
         $id = intval($id);
@@ -44,6 +66,10 @@ class Chair
         }
     }
 
+    /**
+     * @param $id integer
+     * @return bool
+     */
     public static function delete($id)
     {
         $id = intval($id);
@@ -55,6 +81,9 @@ class Chair
         }
     }
 
+    /**
+     * @param $id integer
+     */
     public static function edit($id)
     {
         $id = intval($id);
