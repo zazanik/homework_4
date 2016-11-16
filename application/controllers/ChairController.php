@@ -10,13 +10,12 @@ use zazanik\hw\Models\Chair;
 class ChairController
 {
     /**
-     * @return bool
+     * @return mixed
      */
     public function actionIndex()
     {
         $chairList = Chair::getChairList();
-        require_once(ROOT . '/application/views/chair/index.php');
-        return true;
+        return require_once(ROOT . '/application/views/chair/index.php');
     }
 
     /**

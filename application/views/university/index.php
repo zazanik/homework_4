@@ -1,6 +1,5 @@
 <?php require_once(ROOT . '/application/template/header.php'); ?>
 
-
 <table>
     <tr>
         <td>Назва</td>

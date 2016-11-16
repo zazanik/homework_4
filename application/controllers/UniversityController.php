@@ -1,6 +1,7 @@
 <?php
 
 namespace zazanik\hw\controllers;
+use zazanik\hw\Models\Chair;
 use zazanik\hw\Models\University;
 
 /**
@@ -41,10 +42,18 @@ class UniversityController
     {
         if ($id) {
             $universitiesItem = University::getUniversityItemByID($id);
+            $chairList = University::getChairList($id);
+            $chairItem = University::getChairListNotInclude($id);
             require_once(ROOT . '/application/views/university/view.php');
         }
 
         return true;
+    }
+    
+    public function actionAddchair($university_id, $chair_id)
+    {
+        $universityAddChair = University::addChairToUniversity($university_id, $chair_id);
+        return header("Location: /university/{$university_id}");
     }
 
     /**

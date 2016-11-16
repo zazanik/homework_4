@@ -42,6 +42,60 @@ class University
     }
 
     /**
+     * @param $id
+     * @return array
+     */
+    public static function getChairList($id)
+    {
+        $db = Db::getConnection();
+        $sth = $db->prepare("
+          SELECT c.id, c.name 
+          FROM univesity_chair u_c 
+          LEFT OUTER JOIN chair c ON u_c.chair_id = c.id
+          WHERE unisersity_id ={$id}
+        ");
+
+        $sth->execute();
+        $chairList = $sth->fetchAll($db::FETCH_CLASS, Chair::class);
+        return $chairList;
+    }
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public static function getChairListNotInclude($id)
+    {
+        $db = Db::getConnection();
+        $sth = $db->prepare("
+          SELECT id, name 
+          FROM univesity_chair 
+          LEFT OUTER JOIN chair ON chair_id = id
+          WHERE unisersity_id ={$id}
+        ");
+
+        $sth->execute();
+        $chairItem = $sth->fetchAll($db::FETCH_CLASS, Chair::class);
+        return $chairItem;
+    }
+
+    /**
+     * 
+     * @param $university_id
+     * @param $chair_id
+     * @return bool
+     */
+    public static function addChairToUniversity($university_id, $chair_id)
+    {
+        $db = Db::getConnection();
+        $sth = $db->prepare("
+          INSERT INTO `hw`.`univesity_chair` (`unisersity_id`, `chair_id`) 
+          VALUES ('{$university_id}', '{$chair_id}') ");
+        $sth->execute();
+        return true;
+    }
+
+    /**
      * @param $name string
      * @param $city string
      * @param $link string

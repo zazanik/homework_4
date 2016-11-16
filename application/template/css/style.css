@@ -5,6 +5,10 @@ http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 */
 
+.align-center{
+	text-align: center;
+}
+
 body {
 	margin: 0;
 	padding: 0;
