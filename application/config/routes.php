@@ -1,12 +1,16 @@
 <?php
 return array(
-
-	'news/([0-9]+)' => 'news/view/$1',
-	'news' => 'news/index', 
-	
-	
-	'university' 		=> 'university/index',
-	'university/create'	=> 'university/create'
-
-
+	'^$'									=> 'index/index',
+	'university/create'						=> 'university/create',
+	'university/([0-9]+)'					=> 'university/view/$1',
+	'university/delete/([0-9]+)'			=> 'university/delete/$1',
+	'university/edit/([0-9]+)'				=> 'university/edit/$1',
+	'university/addchair/([0-9]+)/([0-9]+)'	=> 'university/addchair/$1/$2',
+	'university' 							=> 'university/index',
+	'chair/([0-9]+)'						=> 'chair/view/$1',
+	'chair/delete/([0-9]+)'					=> 'chair/delete/$1',
+	'chair/edit/([0-9]+)'					=> 'chair/edit/$1',
+	'chair/new'								=> 'chair/new',
+	'chair/create'							=> 'chair/create',
+	'chair'									=> 'chair/index'
 	);
